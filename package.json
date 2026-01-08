@@ -3,10 +3,12 @@
 	"type": "module",
 	"version": "1.0.0",
 	"license": "MIT",
-	"private": false,
 	"description": "A collection of various utility/helper code I use in my Seyfert projects.",
 	"engines": {
 		"node": ">=22"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"repository": {
 		"url": "https://github.com/TheFallenSpirit/seyfert-utils"
