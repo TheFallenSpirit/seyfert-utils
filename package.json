@@ -1,0 +1,37 @@
+{
+	"name": "seyfert-utils",
+	"type": "module",
+	"version": "1.0",
+	"license": "MIT",
+	"private": false,
+	"description": "A collection of various utility/helper code I use in my Seyfert projects.",
+	"engines": {
+		"node": ">=22"
+	},
+	"repository": {
+		"url": "https://github.com/TheFallenSpirit/seyfert-utils"
+	},
+	"author": {
+		"name": "Liam L",
+		"email": "thefallenspirit@outlook.com",
+		"url": "https://github.com/TheFallenSpirit"
+	},
+	"scripts": {
+		"build": "rm -r build; tsc"
+	},
+	"files": [
+		"build",
+		"LICENSE",
+		"README.md"
+	],
+	"dependencies": {
+		"@sapphire/snowflake": "^3.5.5",
+		"multibyte": "^1.0.5",
+		"nanoid": "^5.1.6",
+		"seyfert": "^4.0.0"
+	},
+	"devDependencies": {
+		"@types/node": "^25.0.3",
+		"typescript": "^5.9.3"
+	}
+}
