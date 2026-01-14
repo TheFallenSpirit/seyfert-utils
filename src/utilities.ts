@@ -53,3 +53,16 @@ export function name(user: User | GuildMember, type: NameType = 'display'): stri
 		case 'username-id-s': return s(`${user.username} (${user.id})`);
 	};
 };
+
+/* Custom reviver function for JSON.parse to handle Maps. */
+export function reviver(_key: string, value: any) {
+    if (typeof value === 'object' && value !== null) if (value.dataType === 'Map') return new Map(value.value);
+    return value;
+};
+
+/* Custom replacer function for JSON.stringify to handle Maps. */
+export function replacer(_key: string, value: any) {
+    if (typeof value === 'bigint') return value.toString();
+    if (value instanceof Map) return { dataType: 'Map', value: [...value]};
+    return value;
+};
