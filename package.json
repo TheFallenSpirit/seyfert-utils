@@ -30,7 +30,8 @@
 	],
 	"exports": {
 		".": "./build/index.js",
-		"./components/*": "./build/components/*.js"
+		"./components/*": "./build/components/*.js",
+		"./handleCommand": "./build/handleCommand.js"
 	},
 	"dependencies": {
 		"@sapphire/snowflake": "^3.5.5",
