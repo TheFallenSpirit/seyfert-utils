@@ -21,7 +21,7 @@ export async function handleModal(this: HandleCommand, interaction: ModalSubmitI
 };
 
 /* My custom message component handler to support advanced custom IDs. */
-export async function messageComponent(this: HandleCommand, interaction: ComponentInteraction) {
+export async function handleMessageComponent(this: HandleCommand, interaction: ComponentInteraction) {
     // @ts-expect-error
     const context = new ComponentContext(this.client, interaction);
     const extended = this.client.options.context?.(interaction) ?? {};
