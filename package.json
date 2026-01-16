@@ -1,7 +1,7 @@
 {
 	"name": "@fallencodes/seyfert-utils",
 	"type": "module",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"license": "MIT",
 	"description": "A collection of various utility/helper code I use in my Seyfert projects.",
 	"main": "build/index.js",
@@ -21,7 +21,8 @@
 		"url": "https://github.com/TheFallenSpirit"
 	},
 	"scripts": {
-		"build": "rm -r build; tsc"
+		"build": "rm -r build; tsc",
+		"prepublishOnly": "rm -r build; tsc"
 	},
 	"files": [
 		"build",
