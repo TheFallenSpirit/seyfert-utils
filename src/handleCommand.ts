@@ -1,4 +1,4 @@
-import { ModalSubmitInteraction, ModalContext, InteractionCommandType, ModalCommand, ComponentCommand, ComponentInteraction } from 'seyfert';
+import { ModalSubmitInteraction, ModalContext, InteractionCommandType, ModalCommand, ComponentCommand, ComponentInteraction, ComponentContext } from 'seyfert';
 import { HandleCommand } from 'seyfert/lib/commands/handle.js';
 
 /* My custom modal handler to support advanced custom IDs. */
