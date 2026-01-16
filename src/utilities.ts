@@ -66,3 +66,8 @@ export function replacer(_key: string, value: any) {
     if (value instanceof Map) return { dataType: 'Map', value: [...value]};
     return value;
 };
+
+/* Converts a number colour to a padded hex code. */
+export function numberToHex(color: number) {
+	return `#${color.toString(16).toUpperCase().padEnd(6, '0')}`;
+};
