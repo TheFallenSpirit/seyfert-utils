@@ -11,6 +11,9 @@ importers:
       '@sapphire/snowflake':
         specifier: ^3.5.5
         version: 3.5.5
+      dayjs:
+        specifier: ^1.11.19
+        version: 1.11.19
       multibyte:
         specifier: ^1.0.5
         version: 1.0.5
@@ -36,6 +39,9 @@ packages:
 
   '@types/node@25.0.8':
     resolution: {integrity: sha512-powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==}
+
+  dayjs@1.11.19:
+    resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
 
   multibyte@1.0.5:
     resolution: {integrity: sha512-n0++pA7D8190Ewo96OzAmGNDDcq4ONJJT008420Ng+GP+ejYwucOtk+WI5mMyZGHoEqMFKET8AHJwztLmMyDvQ==}
@@ -63,6 +69,8 @@ snapshots:
   '@types/node@25.0.8':
     dependencies:
       undici-types: 7.16.0
+
+  dayjs@1.11.19: {}
 
   multibyte@1.0.5: {}
 
