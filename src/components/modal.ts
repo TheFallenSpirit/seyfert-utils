@@ -1,5 +1,6 @@
 import { Label, Modal, StringSelectMenu, TextInput } from 'seyfert';
 import { TextInputStyle, APISelectMenuOption } from 'seyfert/lib/types/index.js';
+import { truncateString } from '../utilities.js';
 
 interface ModalData {
     title: string;
@@ -8,7 +9,10 @@ interface ModalData {
 }
 
 export function createModal(data: ModalData) {
-    return new Modal({ title: data.title, custom_id: data.customId }).setComponents(data.components);
+    return new Modal({
+        title: truncateString(data.title, 45),
+        custom_id: data.customId
+    }).setComponents(data.components);
 };
 
 interface ModalTextInputData {
