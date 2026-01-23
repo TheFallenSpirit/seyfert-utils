@@ -1,4 +1,4 @@
-import { Label, Modal, StringSelectMenu, TextInput } from 'seyfert';
+import { Label, Modal, StringSelectMenu, TextInput, FileUpload } from 'seyfert';
 import { TextInputStyle, APISelectMenuOption } from 'seyfert/lib/types/index.js';
 import { truncateString } from '../utilities.js';
 
@@ -15,7 +15,7 @@ export function createModal(data: ModalData) {
     }).setComponents(data.components);
 };
 
-interface ModalTextInputData {
+interface TextInputData {
     label?: string;
     value?: string;
     customId: string;
@@ -27,7 +27,7 @@ interface ModalTextInputData {
     style: TextInputStyle;
 };
 
-export function createModalTextInput(data: ModalTextInputData) {
+export function createTextInput(data: TextInputData) {
     return new Label({
         label: data.label,
         description: data.description
@@ -42,7 +42,7 @@ export function createModalTextInput(data: ModalTextInputData) {
     }));
 };
 
-interface ModalStringSelectMenuData {
+interface StringSelectMenuData {
     label?: string;
     customId: string;
     required?: boolean;
@@ -53,7 +53,7 @@ interface ModalStringSelectMenuData {
     options: APISelectMenuOption[];
 }
 
-export function createModalStringSelectMenu(data: ModalStringSelectMenuData) {
+export function createStringSelectMenu(data: StringSelectMenuData) {
     return new Label({
         label: data.label,
         description: data.description,
@@ -64,5 +64,26 @@ export function createModalStringSelectMenu(data: ModalStringSelectMenuData) {
         min_values: data.minValues,
         max_values: data.maxValues,
         placeholder: data.placeholder
+    }));
+};
+
+interface FileUploadData {
+    label?: string;
+    customId: string;
+    required?: boolean;
+    minValues?: number;
+    maxValues?: number;
+    description?: string;
+}
+
+export function createFileUpload(data: FileUploadData) {
+    return new Label({
+        label: data.label,
+        description: data.description
+    }).setComponent(new FileUpload({
+        required: data.required,
+        custom_id: data.customId,
+        min_values: data.minValues,
+        max_values: data.maxValues
     }));
 };
