@@ -21,8 +21,8 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
       seyfert:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: 4.0.1-dev-21272622275.0
+        version: 4.0.1-dev-21272622275.0
     devDependencies:
       '@types/node':
         specifier: ^25.0.8
@@ -51,8 +51,8 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
-  seyfert@4.0.0:
-    resolution: {integrity: sha512-XkFJ8kJsv/H1Sme/8Nin25CdlzNLzLWK5TBfLtHPvTbYfavaS9mRHaYDeS1wsqwQ9aMpGYbZk6DkDdmAAz4a9Q==}
+  seyfert@4.0.1-dev-21272622275.0:
+    resolution: {integrity: sha512-c9fAKZUudxLG4bftEEqQJTqbBXAScHaennVNu/WDuWvtey2SPHw5DUzutZTbnNj5ZUfUmgyHv4reAZBKTzlpNw==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -76,7 +76,7 @@ snapshots:
 
   nanoid@5.1.6: {}
 
-  seyfert@4.0.0: {}
+  seyfert@4.0.1-dev-21272622275.0: {}
 
   typescript@5.9.3: {}
 
