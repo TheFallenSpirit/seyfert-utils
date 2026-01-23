@@ -1,7 +1,7 @@
 import { DiscordSnowflake, Snowflake } from '@sapphire/snowflake';
 import { customAlphabet } from 'nanoid';
 import { length, slice } from 'multibyte';
-import { User, GuildMember } from 'seyfert';
+import { User, GuildMember, InteractionGuildMember } from 'seyfert';
 
 /* Sanitises a string, disabling all simple Discord markdown by prepending "\". */
 export function s(content: string): string {
@@ -41,7 +41,7 @@ type NameType =
 | 'username-id-s'
 
 /* Formats a User or GuildMember username or display name with or without sanitisation. */
-export function name(user: User | GuildMember, type: NameType = 'display'): string {
+export function name(user: User | GuildMember | InteractionGuildMember, type: NameType = 'display'): string {
     const display = user instanceof User ? user.globalName : user.displayName;
 
 	switch (type) {
