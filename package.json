@@ -1,7 +1,7 @@
 {
 	"name": "@fallencodes/seyfert-utils",
 	"type": "module",
-	"version": "1.2.5",
+	"version": "1.2.6",
 	"license": "MIT",
 	"description": "A collection of various utility/helper code I use in my Seyfert projects.",
 	"main": "build/index.js",
@@ -40,7 +40,7 @@
 		"dayjs": "^1.11.19",
 		"multibyte": "^1.0.5",
 		"nanoid": "^5.1.6",
-		"seyfert": "4.0.1-dev-21272622275.0"
+		"seyfert": "4.0.1-dev-21273098940.0"
 	},
 	"devDependencies": {
 		"@types/node": "^25.0.8",
