@@ -2,6 +2,8 @@ import { DiscordSnowflake, Snowflake } from '@sapphire/snowflake';
 import { customAlphabet } from 'nanoid';
 import { length, slice } from 'multibyte';
 import { User, GuildMember, InteractionGuildMember } from 'seyfert';
+import { APIRoleColors } from 'seyfert/lib/types/index.js';
+import { ObjectToLower } from 'seyfert/lib/common/index.js';
 
 /* Sanitises a string, disabling all simple Discord markdown by prepending "\". */
 export function s(content: string): string {
@@ -70,4 +72,23 @@ export function replacer(_key: string, value: any) {
 /* Converts a number colour to a padded hex code. */
 export function numberToHex(color: number) {
 	return `#${color.toString(16).toUpperCase().padEnd(6, '0')}`;
+};
+
+/* Converts the API role colors object to an array of colors. */
+export function apiRoleColorsToArray(apiColors: APIRoleColors | ObjectToLower<APIRoleColors>): number[] {
+    const primaryColor = 'primaryColor' in apiColors ? apiColors.primaryColor : apiColors.primary_color;
+    const secondaryColor = 'secondaryColor' in apiColors ? apiColors.secondaryColor : apiColors.secondary_color;
+    const tertiaryColor = 'tertiaryColor' in apiColors ? apiColors.tertiaryColor : apiColors.tertiary_color;
+
+    const colors: number[] = [];
+    if (primaryColor !== 0) colors.push(primaryColor);
+    if (secondaryColor) colors.push(secondaryColor);
+    if (tertiaryColor) colors.push(tertiaryColor);
+    return colors;
+};
+
+
+/* Gets a value from an object with the specified path. */
+export function getValueFromPath<T extends Record<string, any>>(object: T, path: string): unknown | undefined {
+    return path.split('.').reduce((acc, key) => ((acc && (key in acc)) ? acc[key] : undefined), object);
 };
