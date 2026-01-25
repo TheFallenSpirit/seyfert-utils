@@ -92,3 +92,20 @@ export function apiRoleColorsToArray(apiColors: APIRoleColors | ObjectToLower<AP
 export function getValueFromPath<T extends Record<string, any>>(object: T, path: string): unknown | undefined {
     return path.split('.').reduce((acc, key) => ((acc && (key in acc)) ? acc[key] : undefined), object);
 };
+
+/* Truncates an array of strings to a specific character length. */
+export function truncateStringArray(array: string[], maxLength: number = 1000, separator: string = ', ') {
+	const string = array.join(separator);
+	const stringLength = length(string);
+	if (stringLength <= maxLength) return array;
+
+	const truncated = string.slice(0, maxLength);
+	const lastSep = truncated.lastIndexOf(separator);
+	if (lastSep === -1) return [];
+
+	const newArray = truncated.slice(0, lastSep).split(separator);
+	const removedItems = array.length - newArray.length;
+	newArray.push(`${removedItems} more...`);
+
+	return newArray;
+};
