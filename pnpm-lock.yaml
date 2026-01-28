@@ -14,6 +14,12 @@ importers:
       dayjs:
         specifier: ^1.11.19
         version: 1.11.19
+      fuzzysort:
+        specifier: ^3.1.0
+        version: 3.1.0
+      ms:
+        specifier: ^2.1.3
+        version: 2.1.3
       multibyte:
         specifier: ^1.0.5
         version: 1.0.5
@@ -24,6 +30,9 @@ importers:
         specifier: 4.0.1-dev-21273098940.0
         version: 4.0.1-dev-21273098940.0
     devDependencies:
+      '@types/ms':
+        specifier: ^2.1.0
+        version: 2.1.0
       '@types/node':
         specifier: ^25.0.8
         version: 25.0.8
@@ -37,11 +46,20 @@ packages:
     resolution: {integrity: sha512-xzvBr1Q1c4lCe7i6sRnrofxeO1QTP/LKQ6A6qy0iB4x5yfiSfARMEQEghojzTNALDTcv8En04qYNIco9/K9eZQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
+  '@types/ms@2.1.0':
+    resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
+
   '@types/node@25.0.8':
     resolution: {integrity: sha512-powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==}
 
   dayjs@1.11.19:
     resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
+
+  fuzzysort@3.1.0:
+    resolution: {integrity: sha512-sR9BNCjBg6LNgwvxlBd0sBABvQitkLzoVY9MYYROQVX/FvfJ4Mai9LsGhDgd8qYdds0bY77VzYd5iuB+v5rwQQ==}
+
+  ms@2.1.3:
+    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
   multibyte@1.0.5:
     resolution: {integrity: sha512-n0++pA7D8190Ewo96OzAmGNDDcq4ONJJT008420Ng+GP+ejYwucOtk+WI5mMyZGHoEqMFKET8AHJwztLmMyDvQ==}
@@ -66,11 +84,17 @@ snapshots:
 
   '@sapphire/snowflake@3.5.5': {}
 
+  '@types/ms@2.1.0': {}
+
   '@types/node@25.0.8':
     dependencies:
       undici-types: 7.16.0
 
   dayjs@1.11.19: {}
+
+  fuzzysort@3.1.0: {}
+
+  ms@2.1.3: {}
 
   multibyte@1.0.5: {}
 
