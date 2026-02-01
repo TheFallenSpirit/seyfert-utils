@@ -70,18 +70,26 @@ export function createActionRow<T extends ActionBuilderComponents>(...components
     return new ActionRow<T>().setComponents(components);
 };
 
-interface ButtonData {
-    url?: string;
-    label: string;
-    skuId?: string;
-    customId: string;
-    style: ButtonStyle;
+interface BaseButtonData {
+    label?: string;
     disabled?: boolean;
     emoji?: APIMessageComponentEmoji;
 }
 
+type ButtonData = (BaseButtonData & {
+    url: string;
+    style: ButtonStyle.Link;
+}) | (BaseButtonData & {
+    skuId: string;
+    style: ButtonStyle.Premium;
+}) | (BaseButtonData & {
+    customId: string;
+    style: ButtonStyle;
+})
+
 export function createButton(data: ButtonData): Button {
-    const button = new Button(data).setCustomId(data.customId);
-    if (data.skuId) button.setSKUId(data.skuId);
+    const button = new Button(data);
+    if ('customId' in data) button.setCustomId(data.customId);
+    if ('skuId' in data) button.setSKUId(data.skuId);
     return button;
 };
