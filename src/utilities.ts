@@ -1,7 +1,7 @@
 import { DiscordSnowflake, Snowflake } from '@sapphire/snowflake';
 import { customAlphabet } from 'nanoid';
 import { length, slice } from 'multibyte';
-import { User, GuildMember, InteractionGuildMember } from 'seyfert';
+import { User, GuildMember, InteractionGuildMember, AnyContext } from 'seyfert';
 import { APIRoleColors } from 'seyfert/lib/types/index.js';
 import { ObjectToLower } from 'seyfert/lib/common/index.js';
 
@@ -108,4 +108,16 @@ export function truncateStringArray(array: string[], maxLength: number = 1000, s
 	newArray.push(`${removedItems} more...`);
 
 	return newArray;
+};
+
+/* Checks if a command or interaction is from an installed guild. */
+export function isInstalled(context: AnyContext): boolean {
+	// @ts-expect-error
+	if ('message' in context && context.message?.guildId) return true;
+	if (context.interaction.context !== 0) return false;
+
+	const guildId = context.interaction.authorizingIntegrationOwners['0'];
+	if (guildId && guildId !== '0') return true;
+	
+	return false;
 };
