@@ -1,9 +1,9 @@
-import { OKFunction, GuildRole, StopFunction, AllGuildChannels, CommandContext } from 'seyfert';
+import { OKFunction, GuildRole, StopFunction, AllGuildChannels, CommandContext, User } from 'seyfert';
 import { isValidSnowflake } from './utilities.js';
 import dayjs from 'dayjs';
 import ms, { StringValue } from 'ms';
 import fuzzy from 'fuzzysort';
-import { channelMentionRegex, hexRegex, roleMentionRegex } from './variables.js';
+import { channelMentionRegex, hexRegex, roleMentionRegex, userMentionRegex } from './variables.js';
 
 interface StringOption {
     value: string;
@@ -110,4 +110,27 @@ export async function channelsOptionValue(
     if (resolvedChannels.length < 1) return fail(`Hold up! | You didn't specify any valid channels.`);
     // @ts-expect-error
     ok(resolvedChannels);
+};
+
+export async function usersOptionValue(
+    { value: values, context }: StringOption,
+    ok: OKFunction<[User, ...User[]]>,
+    fail: StopFunction
+) {
+    const resolvedUsers: User[] = [];
+    
+    for await (const value of values.split(',').map((value) => value.trim())) {
+        let user: User | undefined;
+        const mentionMatch = userMentionRegex.exec(value)?.[1];
+
+        if (mentionMatch) user = await context.client.users.fetch(mentionMatch).catch(() => undefined);
+        if (!user && isValidSnowflake(value)) user = await context.client.users.fetch(value).catch(() => undefined);
+
+        if (user) resolvedUsers.push(user);
+        else return fail(`Hold up! | The specified user "${user}" wasn't found.`);
+    };
+
+    if (resolvedUsers.length < 1) return fail(`Hold up! | You didn't specify any valid users.`);
+    // @ts-expect-error
+    ok(resolvedUsers);
 };
