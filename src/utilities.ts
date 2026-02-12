@@ -55,9 +55,9 @@ export function name(user: User | GuildMember | InteractionGuildMember, type: Na
 		case 'username-id': return `${user.username} [${user.id}]`;
 		case 'username-id-s': return s(`${user.username} [${user.id}]`);
 		case 'multi-line': return [
-				`__ID__: ${user.id}\n`,
+				`__ID__: \`${user.id}\`\n`,
 				`__Mention__: ${user.toString()}\n`,
-				`__Display Name: ${s(display ? `${display} (@${user.username})` : user.username)}`
+				`__Display Name__: ${s(display ? `${display} (@${user.username})` : user.username)}`
 			].join('')
 	};
 };
