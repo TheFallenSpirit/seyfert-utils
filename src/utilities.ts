@@ -41,6 +41,7 @@ type NameType =
 | 'display-username-s'
 | 'username-id'
 | 'username-id-s'
+| 'multi-line'
 
 /* Formats a User or GuildMember username or display name with or without sanitisation. */
 export function name(user: User | GuildMember | InteractionGuildMember, type: NameType = 'display'): string {
@@ -49,10 +50,15 @@ export function name(user: User | GuildMember | InteractionGuildMember, type: Na
 	switch (type) {
 		case 'display': return display ?? user.username;
 		case 'display-s': return s(display ?? user.username);
-		case 'display-username': return display ? `${display} (${user.username})` : user.username;
-		case 'display-username-s': return s(display ? `${display} (${user.username})` : user.username);
-		case 'username-id': return `${user.username} (${user.id})`;
-		case 'username-id-s': return s(`${user.username} (${user.id})`);
+		case 'display-username': return display ? `${display} (@${user.username})` : user.username;
+		case 'display-username-s': return s(display ? `${display} (@${user.username})` : user.username);
+		case 'username-id': return `${user.username} [${user.id}]`;
+		case 'username-id-s': return s(`${user.username} [${user.id}]`);
+		case 'multi-line': return [
+				`__ID__: ${user.id}\n`,
+				`__Mention__: ${user.toString()}\n`,
+				`__Display Name: ${s(display ? `${display} (@${user.username})` : user.username)}`
+			].join('')
 	};
 };
 
