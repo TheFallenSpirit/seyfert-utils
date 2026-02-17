@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 import { Logger } from 'seyfert';
 import { red, LogLevels, cyan, dim, yellow, bgRed, gray, bold } from 'seyfert/lib/common/index.js';
 
+/* My custom logger with more compact information. */
 export default function customizeLogger() {
     Logger.customize((_, level, args) => {
         let color = red;

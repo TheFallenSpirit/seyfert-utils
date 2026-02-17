@@ -11,6 +11,9 @@ importers:
       '@sapphire/snowflake':
         specifier: ^3.5.5
         version: 3.5.5
+      change-case:
+        specifier: ^5.4.4
+        version: 5.4.4
       dayjs:
         specifier: ^1.11.19
         version: 1.11.19
@@ -27,8 +30,8 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
       seyfert:
-        specifier: 4.1.0
-        version: 4.1.0
+        specifier: 4.2.1
+        version: 4.2.1
     devDependencies:
       '@types/ms':
         specifier: ^2.1.0
@@ -52,6 +55,9 @@ packages:
   '@types/node@25.0.8':
     resolution: {integrity: sha512-powIePYMmC3ibL0UJ2i2s0WIbq6cg6UyVFQxSCpaPxxzAaziRfimGivjdF943sSGV6RADVbk0Nvlm5P/FB44Zg==}
 
+  change-case@5.4.4:
+    resolution: {integrity: sha512-HRQyTk2/YPEkt9TnUPbOpr64Uw3KOicFWPVBb+xiHvd6eBx/qPr9xqfBFDT8P2vWsvvz4jbEkfDe71W3VyNu2w==}
+
   dayjs@1.11.19:
     resolution: {integrity: sha512-t5EcLVS6QPBNqM2z8fakk/NKel+Xzshgt8FFKAn+qwlD1pzZWxh0nVCrvFK7ZDb6XucZeF9z8C7CBWTRIVApAw==}
 
@@ -69,8 +75,8 @@ packages:
     engines: {node: ^18 || >=20}
     hasBin: true
 
-  seyfert@4.1.0:
-    resolution: {integrity: sha512-SIv40+9oOT8gNXIbtaQhxZWN/PuVP1vF2yU+ZM2XkmRwirqmonATHlNF2o/pCGsX9hudNuD59HJfHEixOmESlw==}
+  seyfert@4.2.1:
+    resolution: {integrity: sha512-JvV7ofAHBbN2Wej6zsaiSTl9ju7wHCCsz5IqQDEaztG0tEna4bd/a77olea3ZhuWhrUjhxktZ/b6yJg0+tziiA==}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -90,6 +96,8 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  change-case@5.4.4: {}
+
   dayjs@1.11.19: {}
 
   fuzzysort@3.1.0: {}
@@ -100,7 +108,7 @@ snapshots:
 
   nanoid@5.1.6: {}
 
-  seyfert@4.1.0: {}
+  seyfert@4.2.1: {}
 
   typescript@5.9.3: {}
 
