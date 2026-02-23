@@ -1,4 +1,4 @@
-import { Label, Modal, StringSelectMenu, TextInput, FileUpload } from 'seyfert';
+import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, RadioGroupOption, CheckboxGroupOption, CheckboxGroup } from 'seyfert';
 import { TextInputStyle, APISelectMenuOption } from 'seyfert/lib/types/index.js';
 import { truncateString } from '../utilities.js';
 
@@ -86,4 +86,44 @@ export function createFileUpload(data: FileUploadData) {
         min_values: data.minValues,
         max_values: data.maxValues
     }));
+};
+
+interface RadioGroupData {
+    label?: string;
+    customId: string;
+    required?: boolean;
+    description?: string;
+    options: RadioGroupOption[];
+}
+
+export function createRadioGroup(data: RadioGroupData) {
+    return new Label({
+        label: data.label,
+        description: data.description
+    }).setComponent(new RadioGroup({
+        required: data.required,
+        custom_id: data.customId
+    }).setOptions(data.options));
+};
+
+interface CheckboxGroupData {
+    label?: string;
+    customId: string;
+    required?: boolean;
+    minValues?: number;
+    maxValues?: number;
+    description?: string;
+    options: CheckboxGroupOption[]
+}
+
+export function createCheckboxGroup(data: CheckboxGroupData) {
+    return new Label({
+        label: data.label,
+        description: data.description
+    }).setComponent(new CheckboxGroup({
+        required: data.required,
+        custom_id: data.customId,
+        min_values: data.minValues,
+        max_values: data.maxValues
+    }).setOptions(data.options))
 };
