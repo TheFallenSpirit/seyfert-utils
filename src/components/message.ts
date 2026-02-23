@@ -1,6 +1,6 @@
 import { ActionBuilderComponents, ActionRow, Button, Container, ContainerBuilderComponents, FixedComponents, Section, Separator, TextDisplay, Thumbnail } from 'seyfert';
 import { EmojiResolvable } from 'seyfert/lib/common/index.js';
-import { APIMessageComponentEmoji, ButtonStyle, Spacing } from 'seyfert/lib/types/index.js';
+import { ButtonStyle, Spacing } from 'seyfert/lib/types/index.js';
 
 export function createTextDisplay(content: string): TextDisplay {
     return new TextDisplay({ content });
