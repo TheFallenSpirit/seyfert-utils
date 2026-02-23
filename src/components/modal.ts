@@ -1,4 +1,4 @@
-import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, RadioGroupOption, CheckboxGroupOption, CheckboxGroup } from 'seyfert';
+import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, CheckboxGroup } from 'seyfert';
 import { TextInputStyle, APISelectMenuOption } from 'seyfert/lib/types/index.js';
 import { truncateString } from '../utilities.js';
 
@@ -88,12 +88,19 @@ export function createFileUpload(data: FileUploadData) {
     }));
 };
 
+interface GroupOption {
+    value: string;
+    label: string;
+    default?: boolean;
+    description?: string;
+}
+
 interface RadioGroupData {
     label?: string;
     customId: string;
     required?: boolean;
     description?: string;
-    options: RadioGroupOption[];
+    options: GroupOption[];
 }
 
 export function createRadioGroup(data: RadioGroupData) {
@@ -101,9 +108,10 @@ export function createRadioGroup(data: RadioGroupData) {
         label: data.label,
         description: data.description
     }).setComponent(new RadioGroup({
+        options: data.options,
         required: data.required,
         custom_id: data.customId
-    }).setOptions(data.options));
+    }));
 };
 
 interface CheckboxGroupData {
@@ -113,7 +121,7 @@ interface CheckboxGroupData {
     minValues?: number;
     maxValues?: number;
     description?: string;
-    options: CheckboxGroupOption[]
+    options: GroupOption[];
 }
 
 export function createCheckboxGroup(data: CheckboxGroupData) {
@@ -121,9 +129,10 @@ export function createCheckboxGroup(data: CheckboxGroupData) {
         label: data.label,
         description: data.description
     }).setComponent(new CheckboxGroup({
+        options: data.options,
         required: data.required,
         custom_id: data.customId,
         min_values: data.minValues,
         max_values: data.maxValues
-    }).setOptions(data.options))
+    }))
 };
