@@ -1,4 +1,5 @@
 import { ActionBuilderComponents, ActionRow, Button, Container, ContainerBuilderComponents, FixedComponents, Section, Separator, TextDisplay, Thumbnail } from 'seyfert';
+import { EmojiResolvable } from 'seyfert/lib/common/index.js';
 import { APIMessageComponentEmoji, ButtonStyle, Spacing } from 'seyfert/lib/types/index.js';
 
 export function createTextDisplay(content: string): TextDisplay {
@@ -73,7 +74,7 @@ export function createActionRow<T extends ActionBuilderComponents>(...components
 interface BaseButtonData {
     label?: string;
     disabled?: boolean;
-    emoji?: APIMessageComponentEmoji;
+    emoji?: EmojiResolvable;
 }
 
 type ButtonData = (BaseButtonData & {
@@ -88,8 +89,15 @@ type ButtonData = (BaseButtonData & {
 })
 
 export function createButton(data: ButtonData): Button {
-    const button = new Button(data);
-    if ('customId' in data) button.setCustomId(data.customId);
+    const button = new Button({
+        label: data.label,
+        style: data.style,
+        disabled: data.disabled
+    });
+
+    if (data.emoji) button.setEmoji(data.emoji);
     if ('skuId' in data) button.setSKUId(data.skuId);
+    if ('customId' in data) button.setCustomId(data.customId);
+
     return button;
 };
