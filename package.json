@@ -1,7 +1,7 @@
 {
 	"name": "@fallencodes/seyfert-utils",
 	"type": "module",
-	"version": "1.5.1",
+	"version": "1.5.2",
 	"license": "MIT",
 	"description": "A collection of various utility/helper code I use in my Seyfert projects.",
 	"main": "build/index.js",
