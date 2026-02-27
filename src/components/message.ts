@@ -96,6 +96,7 @@ export function createButton(data: ButtonData): Button {
     });
 
     if (data.emoji) button.setEmoji(data.emoji);
+    if ('url' in data) button.setURL(data.url);
     if ('skuId' in data) button.setSKUId(data.skuId);
     if ('customId' in data) button.setCustomId(data.customId);
 
