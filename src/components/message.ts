@@ -1,4 +1,4 @@
-import { ActionBuilderComponents, ActionRow, Button, Container, ContainerBuilderComponents, FixedComponents, Section, Separator, TextDisplay, Thumbnail } from 'seyfert';
+import { ActionBuilderComponents, ActionRow, Button, Container, ContainerBuilderComponents, FixedComponents, Section, Separator, StringSelectMenu, StringSelectOption, TextDisplay, Thumbnail } from 'seyfert';
 import { EmojiResolvable } from 'seyfert/lib/common/index.js';
 import { ButtonStyle, Spacing } from 'seyfert/lib/types/index.js';
 
@@ -101,4 +101,41 @@ export function createButton(data: ButtonData): Button {
     if ('customId' in data) button.setCustomId(data.customId);
 
     return button;
+};
+
+interface StringSelectData {
+    customId: string;
+    minValues?: number;
+    maxValues?: number;
+    placeholder?: string;
+    options: StringSelectOptionData[];
+};
+
+interface StringSelectOptionData {
+    label: string;
+    value: string;
+    emoji?: EmojiResolvable;
+    default?: boolean;
+    description?: string;
+}
+
+export function createStringSelect(data: StringSelectData) {
+    const stringSelect = new StringSelectMenu({
+        custom_id: data.customId,
+        min_values: data.minValues,
+        max_values: data.maxValues,
+        placeholder: data.placeholder
+    }).setOptions(data.options.map((optionData) => {
+        const option = new StringSelectOption({
+            label: optionData.label,
+            value: optionData.value,
+            default: optionData.default,
+            description: optionData.description
+        });
+
+        if (optionData.emoji) option.setEmoji(optionData.emoji);
+        return option;
+    }));
+
+    return createActionRow<StringSelectMenu>(stringSelect);
 };
