@@ -1,4 +1,19 @@
-import { ActionBuilderComponents, ActionRow, Button, Container, ContainerBuilderComponents, FixedComponents, Section, Separator, StringSelectMenu, StringSelectOption, TextDisplay, Thumbnail } from 'seyfert';
+import {
+    ActionBuilderComponents,
+    ActionRow,
+    Button,
+    Container,
+    ContainerBuilderComponents,
+    FixedComponents,
+    MediaGallery,
+    MediaGalleryItem,
+    Section,
+    Separator,
+    StringSelectMenu,
+    StringSelectOption,
+    TextDisplay,
+    Thumbnail
+} from 'seyfert';
 import { EmojiResolvable } from 'seyfert/lib/common/index.js';
 import { ButtonStyle, Spacing } from 'seyfert/lib/types/index.js';
 
@@ -138,4 +153,18 @@ export function createStringSelect(data: StringSelectData) {
     }));
 
     return createActionRow<StringSelectMenu>(stringSelect);
+};
+
+interface MediaGalleryItemData {
+    url: string;
+    spoiler?: boolean;
+    description?: string;
+}
+
+export function createMediaGallery(...items: MediaGalleryItemData[]) {
+    return new MediaGallery().setItems(items.map((item) => new MediaGalleryItem({
+        media: { url: item.url },
+        spoiler: item.spoiler,
+        description: item.description
+    })));
 };
