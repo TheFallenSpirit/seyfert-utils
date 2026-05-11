@@ -144,6 +144,7 @@ interface RoleSelectData {
     minValues?: number;
     maxValues?: number;
     description?: string;
+    placeholder?: string;
     defaultValues?: string[];
 }
 
@@ -156,6 +157,7 @@ export function createRoleSelect(data: RoleSelectData) {
         custom_id: data.customId,
         min_values: data.minValues,
         max_values: data.maxValues,
+        placeholder: data.placeholder,
         default_values: data.defaultValues?.map((id) => ({ id, type: SelectMenuDefaultValueType.Role }))
     }));
 };
@@ -167,6 +169,7 @@ interface ChannelSelectData {
     minValues?: number;
     maxValues?: number;
     description?: string;
+    placeholder?: string;
     channelTypes?: ChannelType[];
     defaultValues?: string[];
 }
@@ -180,6 +183,7 @@ export function createChannelSelect(data: ChannelSelectData) {
         custom_id: data.customId,
         min_values: data.minValues,
         max_values: data.maxValues,
+        placeholder: data.placeholder,
         channel_types: data.channelTypes,
         default_values: data.defaultValues?.map((id) => ({ id, type: SelectMenuDefaultValueType.Channel }))
     }));
