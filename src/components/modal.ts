@@ -1,5 +1,5 @@
-import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, CheckboxGroup } from 'seyfert';
-import { TextInputStyle, APISelectMenuOption } from 'seyfert/lib/types/index.js';
+import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, CheckboxGroup, ChannelSelectMenu, RoleSelectMenu } from 'seyfert';
+import { TextInputStyle, APISelectMenuOption, ChannelType, SelectMenuDefaultValueType } from 'seyfert/lib/types/index.js';
 import { truncateString } from '../utilities.js';
 
 interface ModalData {
@@ -135,4 +135,52 @@ export function createCheckboxGroup(data: CheckboxGroupData) {
         min_values: data.minValues,
         max_values: data.maxValues
     }))
+};
+
+interface RoleSelectData {
+    label?: string;
+    customId: string;
+    required?: boolean;
+    minValues?: number;
+    maxValues?: number;
+    description?: string;
+    defaultValues?: string[];
+}
+
+export function createRoleSelect(data: RoleSelectData) {
+    return new Label({
+        label: data.label,
+        description: data.description
+    }).setComponent(new RoleSelectMenu({
+        required: data.required,
+        custom_id: data.customId,
+        min_values: data.minValues,
+        max_values: data.maxValues,
+        default_values: data.defaultValues?.map((id) => ({ id, type: SelectMenuDefaultValueType.Role }))
+    }));
+};
+
+interface ChannelSelectData {
+    label?: string;
+    customId: string;
+    required?: boolean;
+    minValues?: number;
+    maxValues?: number;
+    description?: string;
+    channelTypes?: ChannelType[];
+    defaultValues?: string[];
+}
+
+export function createChannelSelect(data: ChannelSelectData) {
+    return new Label({
+        label: data.label,
+        description: data.description
+    }).setComponent(new ChannelSelectMenu({
+        required: data.required,
+        custom_id: data.customId,
+        min_values: data.minValues,
+        max_values: data.maxValues,
+        channel_types: data.channelTypes,
+        default_values: data.defaultValues?.map((id) => ({ id, type: SelectMenuDefaultValueType.Channel }))
+    }));
 };
