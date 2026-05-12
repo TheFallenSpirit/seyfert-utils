@@ -3,7 +3,7 @@ import { isValidSnowflake } from './utilities.js';
 import dayjs from 'dayjs';
 import ms, { StringValue } from 'ms';
 import fuzzy from 'fuzzysort';
-import { channelMentionRegex, hexRegex, roleMentionRegex, userMentionRegex } from './variables.js';
+import { channelMentionRegex, customEmojiRegex, emojiRegex, hexRegex, roleMentionRegex, userMentionRegex } from './variables.js';
 import { ChannelType } from 'seyfert/lib/types/index.js';
 import { noCase } from 'change-case';
 
@@ -209,4 +209,44 @@ function listFormat(options: (string | ChoiceObject)[]) {
 
 function channelTypeFormat(types: number[]) {
     return listFormat(types.map((type) => noCase(ChannelType[type] ?? '').replace('guild ', '')));
+};
+
+/* Returns an array of emojis from the provided string value. */
+export async function emojisOptionValue(
+    { value: values, context }: StringOption,
+    ok: OKFunction<[string, ...string[]]>,
+    fail: StopFunction
+) {
+    const resolvedEmojis: string[] = [];
+
+    for (const rawEmoji of values.split(',').map((value) => value.trim())) {
+        let emoji: string | undefined;
+        const customMatch = rawEmoji.match(customEmojiRegex);
+
+        if (customMatch?.[2]) {
+            const emojiObject = context.client.cache.emojis?.get(customMatch[2]);
+            if (emojiObject) emoji = customMatch[0];
+        };
+
+        if (!emoji) {
+            const unicodeMatch = rawEmoji.match(emojiRegex);
+            if (unicodeMatch?.[0]) emoji = unicodeMatch[0];  
+        };
+        
+        if (!emoji) {
+            // @ts-expect-error
+            const username = context.client.me.username;
+            if (customMatch?.[2]) return fail(`The emoji "${rawEmoji}" isn't a custom emoji ${username} can access.`);
+            else return fail(`The emoji "${rawEmoji}" isn't a valid unicode or custom emoji.`);
+        };
+
+        resolvedEmojis.push(emoji);
+    };
+
+    if (resolvedEmojis.length < 1) return fail(
+        `You didn't specify any valid unicode or custom emojis.`
+    );
+
+    // @ts-expect-error
+    ok(resolvedEmojis);
 };
