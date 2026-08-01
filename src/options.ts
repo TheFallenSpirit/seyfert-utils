@@ -1,11 +1,11 @@
 import { OKFunction, GuildRole, StopFunction, AllGuildChannels, CommandContext, User, OnOptionsReturnObject } from 'seyfert';
 import { isValidSnowflake } from './utilities.js';
 import dayjs from 'dayjs';
-import ms, { StringValue } from 'ms';
 import fuzzy from 'fuzzysort';
 import { channelMentionRegex, customEmojiRegex, emojiRegex, hexRegex, roleMentionRegex, userMentionRegex } from './variables.js';
 import { ChannelType } from 'seyfert/lib/types/index.js';
 import { noCase } from 'change-case';
+import parse from 'parse-duration';
 
 interface StringOption {
     value: string;
@@ -39,8 +39,8 @@ export function dateOptionValue({ value }: StringOption, ok: OKFunction<Date>, f
 
 /* Returns a valid date object from the provided string value. */
 export function relativeTimeOptionValue({ value }: StringOption, ok: OKFunction<number>, fail: StopFunction) {
-    const relativeMs = ms(value as StringValue);
-    if (isNaN(relativeMs)) return fail(`The provided time value isn't a valid amount of time.`);
+    const relativeMs = parse(value);
+    if (!relativeMs) return fail(`The provided time value isn't a valid amount of time.`);
     return ok(relativeMs);
 };
 
@@ -99,7 +99,6 @@ export async function channelsOptionValue(
         if (!channel && isValidSnowflake(value)) channel = channels.find(({ id }) => value === id);
 
         if (!channel) {
-            // @ts-expect-error
             const formattedChannels = channels.map(({ id, name }) => ({ id: id, name: fuzzy.prepare(name) }));
             const match = fuzzy.go(value, formattedChannels, { key: 'name' })[0];
             if (match) channel = channels.find(({ id }) => match.obj.id === id);

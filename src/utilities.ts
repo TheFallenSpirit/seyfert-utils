@@ -94,7 +94,6 @@ export function apiRoleColorsToArray(apiColors: APIRoleColors | ObjectToLower<AP
     return colors;
 };
 
-
 /* Gets a value from an object with the specified path. */
 export function getValueFromPath<T extends Record<string, any>>(object: T, path: string): unknown | undefined {
     return path.split('.').reduce((acc, key) => ((acc && (key in acc)) ? acc[key] : undefined), object);
@@ -119,7 +118,6 @@ export function truncateStringArray(array: string[], maxLength: number = 1000, s
 
 /* Checks if a command or interaction is from an installed guild. */
 export function isInstalled(context: AnyContext): boolean {
-	// @ts-expect-error
 	if ('message' in context && context.message?.guildId) return true;
 	if (context.interaction.context !== 0) return false;
 
