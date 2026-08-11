@@ -43,11 +43,13 @@
 		"fuzzysort": "^3.1.0",
 		"multibyte": "^1.0.7",
 		"nanoid": "^6.0.1",
-		"parse-duration": "^2.1.8",
-		"seyfert": "^5.0.0"
+		"parse-duration": "^2.1.8"
 	},
 	"devDependencies": {
 		"@types/node": "^26.2.0",
 		"typescript": "^7.0.2"
+	},
+	"peerDependencies": {
+		"seyfert": ">=5.0.0-dev-0 <6.0.0"
 	}
 }
