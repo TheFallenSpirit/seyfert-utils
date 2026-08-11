@@ -13,7 +13,7 @@ export async function handleModal(interaction: ModalSubmitInteraction) {
 
     try {
         context.command = modal;
-        await interaction.client.components.execute(modal, context);
+        await interaction.client.components.executeModal(context);
     } catch (error) {
         interaction.client.components.onFail(error);
     };
@@ -34,7 +34,7 @@ export async function handleMessageComponent(interaction: ComponentInteraction) 
 
     try {
         context.command = component;
-        await interaction.client.components.execute(component, context);
+        await interaction.client.components.executeComponent(context);
     } catch (error) {
         await interaction.client.components.onFail(error);
     };
