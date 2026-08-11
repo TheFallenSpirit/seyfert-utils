@@ -7,7 +7,7 @@ import { ObjectToLower } from 'seyfert/lib/common/index.js';
 
 /* Sanitises a string, disabling all simple Discord markdown by prepending "\". */
 export function s(content: string): string {
-    return content.replace(/`/g, '\\`').replace(/\*/g, '\\*').replace(/\|/g, '\\|').replace(/_/g, '\\_');
+    return content.replace(/`/g, '\\`').replace(/\*/g, '\\*').replace(/\|/g, '\\|').replace(/_/g, '\\_').replace(/#/g, '\\#');
 };
 
 /* Generates a random alphanumeric string with the provided length. */
