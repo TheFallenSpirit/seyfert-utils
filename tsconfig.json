@@ -1,17 +1,17 @@
 {
+    "include": ["src"],
     "compilerOptions": {
+        "types": ["node"],
         "strict": true,
+        "module": "NodeNext",
         "outDir": "build",
         "rootDir": "src",
         "declaration": true,
-        "module": "NodeNext",
         "skipLibCheck": true,
         "noUnusedLocals": true,
         "declarationMap": true,
         "esModuleInterop": true,
         "noUnusedParameters": true,
         "noUncheckedIndexedAccess": true
-    },
-    "include": ["src"],
-    "exclude": ["node_modules", "build"]
+    }
 }

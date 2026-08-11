@@ -1,7 +1,7 @@
 import { DiscordSnowflake, Snowflake } from '@sapphire/snowflake';
 import { customAlphabet } from 'nanoid';
 import { length, slice } from 'multibyte';
-import { User, GuildMember, InteractionGuildMember, AnyContext } from 'seyfert';
+import { User, AnyContext, GuildMember } from 'seyfert';
 import { APIRoleColors } from 'seyfert/lib/types/index.js';
 import { ObjectToLower } from 'seyfert/lib/common/index.js';
 
@@ -44,7 +44,7 @@ type NameType =
 | 'multi-line'
 
 /* Formats a User or GuildMember username or display name with or without sanitisation. */
-export function name(user: User | GuildMember | InteractionGuildMember, type: NameType = 'display'): string {
+export function name(user: User | GuildMember, type: NameType = 'display'): string {
     const display = user instanceof User ? user.globalName : user.displayName;
 
 	switch (type) {
