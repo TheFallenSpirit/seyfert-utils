@@ -11,8 +11,6 @@ export async function handleModal(interaction: ModalSubmitInteraction) {
         component.customId === interaction.customId.split(':')[0]
     )) as ModalCommand;
 
-    console.log(modal);
-
     try {
         context.command = modal;
         await interaction.client.components.execute(modal, context);
@@ -33,8 +31,6 @@ export async function handleMessageComponent(interaction: ComponentInteraction) 
         component.cType === interaction.componentType &&
         component.customId === interaction.customId.split(':')[0]
     )) as ComponentCommand;
-
-    console.log(component);
 
     try {
         context.command = component;
