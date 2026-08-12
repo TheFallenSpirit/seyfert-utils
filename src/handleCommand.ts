@@ -11,9 +11,11 @@ export async function handleModal(interaction: ModalSubmitInteraction) {
         component.customId === interaction.customId.split(':')[0]
     )) as ModalCommand;
 
+    console.log(modal);
+
     try {
         context.command = modal;
-        await interaction.client.components.executeModal(context);
+        await interaction.client.components.execute(modal, context);
     } catch (error) {
         interaction.client.components.onFail(error);
     };
@@ -32,9 +34,11 @@ export async function handleMessageComponent(interaction: ComponentInteraction) 
         component.customId === interaction.customId.split(':')[0]
     )) as ComponentCommand;
 
+    console.log(component);
+
     try {
         context.command = component;
-        await interaction.client.components.executeComponent(context);
+        await interaction.client.components.execute(component, context);
     } catch (error) {
         await interaction.client.components.onFail(error);
     };
