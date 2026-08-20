@@ -31,7 +31,7 @@ importers:
         version: 2.1.8
       seyfert:
         specifier: '>=5.0.0-dev-0 <6.0.0'
-        version: 5.0.0
+        version: 5.0.1-dev-31964343125.0
     devDependencies:
       '@types/node':
         specifier: ^26.2.0
@@ -189,8 +189,8 @@ packages:
   parse-duration@2.1.8:
     resolution: {integrity: sha512-hM72vQ2w/HebbXx2pyUaR+EBjbkPx3Xi2aWAF9SNvJnRbP0p46KLcI8WP/z5ZruCUsJr0L2HWexVtB3PlBf/LA==}
 
-  seyfert@5.0.0:
-    resolution: {integrity: sha512-73tb7/RiToy7+IO1in84zzn736XMXtf2Td0I26bSL2+09wcyEdZG1J4vj5M6twesMACFqv498ELImx6CpddCCQ==}
+  seyfert@5.0.1-dev-31964343125.0:
+    resolution: {integrity: sha512-+k71s+E0L89bfhXAhXiLDMhvX0MjRhPwoc7rQvVZgJDl1VW1E2exc2DII9IovQc/gevDOVKZrR8JKb8wyBC8PA==}
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -280,7 +280,7 @@ snapshots:
 
   parse-duration@2.1.8: {}
 
-  seyfert@5.0.0: {}
+  seyfert@5.0.1-dev-31964343125.0: {}
 
   typescript@7.0.2:
     optionalDependencies:

@@ -1,5 +1,5 @@
 import { Label, Modal, StringSelectMenu, TextInput, FileUpload, RadioGroup, CheckboxGroup, ChannelSelectMenu, RoleSelectMenu } from 'seyfert';
-import { TextInputStyle, APISelectMenuOption, ChannelType, SelectMenuDefaultValueType } from 'seyfert/lib/types/index.js';
+import { TextInputStyle, APISelectMenuOption, ChannelType, SelectMenuDefaultValueType, FileUploadType } from 'seyfert/lib/types/index.js';
 import { truncateString } from '../utilities.js';
 
 interface ModalData {
@@ -73,6 +73,7 @@ interface FileUploadData {
     required?: boolean;
     minValues?: number;
     maxValues?: number;
+    fileTypes?: FileUploadType[];
     description?: string;
 }
 
@@ -84,7 +85,8 @@ export function createFileUpload(data: FileUploadData) {
         required: data.required,
         custom_id: data.customId,
         min_values: data.minValues,
-        max_values: data.maxValues
+        max_values: data.maxValues,
+        file_types: data.fileTypes
     }));
 };
 
